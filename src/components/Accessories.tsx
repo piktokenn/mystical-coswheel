@@ -1,31 +1,34 @@
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ShoppingBag } from 'lucide-react';
+import AddToCartButton from './AddToCartButton';
 
 const Accessories = () => {
   const accessories = [
     {
+      id: 'helmet-001',
       name: "Smart Helmet",
-      price: "$89",
+      price: 89,
       image: "https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description: "Bluetooth-enabled helmet with built-in speakers and LED lights"
     },
     {
+      id: 'battery-001',
       name: "Extra Battery Pack",
-      price: "$299",
+      price: 299,
       image: "https://images.unsplash.com/photo-1607604762246-c26e4e163a50?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description: "Extend your range with an additional 48V 13Ah battery pack"
     },
     {
+      id: 'lock-001',
       name: "Premium Lock Set",
-      price: "$79",
+      price: 79,
       image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description: "Heavy-duty U-lock with cable for maximum security"
     },
     {
+      id: 'mount-001',
       name: "Phone Mount",
-      price: "$39",
+      price: 39,
       image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       description: "Universal phone holder with 360° rotation and shock absorption"
     }
@@ -42,8 +45,8 @@ const Accessories = () => {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {accessories.map((accessory, index) => (
-            <Card key={index} className="overflow-hidden">
+          {accessories.map((accessory) => (
+            <Card key={accessory.id} className="overflow-hidden">
               <div className="aspect-square overflow-hidden">
                 <img 
                   src={accessory.image} 
@@ -53,16 +56,21 @@ const Accessories = () => {
               </div>
               <CardHeader>
                 <CardTitle className="text-lg">{accessory.name}</CardTitle>
-                <p className="text-2xl font-bold text-orange-500">{accessory.price}</p>
+                <p className="text-2xl font-bold text-orange-500">${accessory.price}</p>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600">{accessory.description}</p>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-orange-500 hover:bg-orange-600">
-                  <ShoppingBag className="h-4 w-4 mr-2" />
-                  Add to Cart
-                </Button>
+                <AddToCartButton 
+                  product={{
+                    id: accessory.id,
+                    name: accessory.name,
+                    price: accessory.price,
+                    image: accessory.image,
+                    type: 'accessory'
+                  }}
+                />
               </CardFooter>
             </Card>
           ))}

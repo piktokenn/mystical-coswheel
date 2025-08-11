@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Bike, Zap, Clock } from 'lucide-react';
+import AddToCartButton from './AddToCartButton';
 
 interface ProductCardProps {
   name: string;
@@ -10,9 +10,12 @@ interface ProductCardProps {
   range: string;
   speed: string;
   chargeTime: string;
+  id: string;
 }
 
-const ProductCard = ({ name, price, image, range, speed, chargeTime }: ProductCardProps) => {
+const ProductCard = ({ name, price, image, range, speed, chargeTime, id }: ProductCardProps) => {
+  const numericPrice = parseFloat(price.replace('$', '').replace(',', ''));
+  
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="aspect-video overflow-hidden">
@@ -43,7 +46,15 @@ const ProductCard = ({ name, price, image, range, speed, chargeTime }: ProductCa
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full bg-orange-500 hover:bg-orange-600">View Details</Button>
+        <AddToCartButton 
+          product={{
+            id,
+            name,
+            price: numericPrice,
+            image,
+            type: 'bike'
+          }}
+        />
       </CardFooter>
     </Card>
   );

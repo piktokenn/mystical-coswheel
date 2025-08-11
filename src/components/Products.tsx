@@ -4,6 +4,7 @@ import ProductCard from './ProductCard';
 const Products = () => {
   const products = [
     {
+      id: 't26',
       name: "COSWHEEL T26",
       price: "$1,299",
       image: "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -12,6 +13,7 @@ const Products = () => {
       chargeTime: "4-6 hours"
     },
     {
+      id: 't20',
       name: "COSWHEEL T20",
       price: "$999",
       image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -20,6 +22,7 @@ const Products = () => {
       chargeTime: "3-4 hours"
     },
     {
+      id: 'ct20',
       name: "COSWHEEL CT20",
       price: "$1,599",
       image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -40,8 +43,8 @@ const Products = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <ProductCard key={index} {...product} />
+          {products.map((product) => (
+            <ProductCard key={product.id} {...product} />
           ))}
         </div>
       </div>
