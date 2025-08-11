@@ -1,12 +1,53 @@
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, X } from 'lucide-react';
 
 const SpecSheet = () => {
   const [selectedModel, setSelectedModel] = useState('t26');
 
   const specs = {
+    t20: {
+      name: "T20",
+      overview: {
+        "Motor": "500W Bafang Geared Hub Motor",
+        "Battery": "48V 10.4Ah Samsung Lithium-ion",
+        "Range": "40-50 miles",
+        "Top Speed": "25 mph",
+        "Weight": "55 lbs",
+        "Max Load": "280 lbs"
+      },
+      frame: {
+        "Frame Material": "6061 Aluminum Alloy",
+        "Frame Size": "16\" (Small)",
+        "Fork": "Front Suspension Fork",
+        "Rear Shock": "None",
+        "Handlebar": "Aluminum 680mm",
+        "Seatpost": "Aluminum 30.4mm"
+      },
+      drivetrain: {
+        "Shifter": "Shimano 6-speed",
+        "Rear Derailleur": "Shimano Tourney",
+        "Crankset": "48T Chainring",
+        "Cassette": "14-28T",
+        "Chain": "KMC Z7"
+      },
+      brakes: {
+        "Front Brake": "Mechanical Disc 160mm",
+        "Rear Brake": "Mechanical Disc 160mm",
+        "Brake Levers": "Mechanical"
+      },
+      wheels: {
+        "Rims": "Aluminum Double Wall",
+        "Tires": "20\" x 4.0\" Fat Tires",
+        "Hubs": "Aluminum Sealed Bearing"
+      },
+      electronics: {
+        "Display": "LCD Display",
+        "Throttle": "Thumb Throttle",
+        "Lights": "LED Headlight & Taillight",
+        "USB Port": "No"
+      }
+    },
     t26: {
       name: "T26",
       overview: {
@@ -49,18 +90,6 @@ const SpecSheet = () => {
         "USB Port": "Yes (5V 1A)"
       }
     },
-    t20: {
-      name: "T20",
-      overview: {
-        "Motor": "500W Bafang Geared Hub Motor",
-        "Battery": "48V 10.4Ah Samsung Lithium-ion",
-        "Range": "40-50 miles",
-        "Top Speed": "25 mph",
-        "Weight": "55 lbs",
-        "Max Load": "280 lbs"
-      },
-      // Similar structure for other categories...
-    },
     ct20: {
       name: "CT20",
       overview: {
@@ -71,9 +100,48 @@ const SpecSheet = () => {
         "Weight": "68 lbs",
         "Max Load": "330 lbs"
       },
-      // Similar structure for other categories...
+      frame: {
+        "Frame Material": "6061 Aluminum Alloy",
+        "Frame Size": "20\" (Large)",
+        "Fork": "Front Suspension Fork",
+        "Rear Shock": "Rear Air Suspension",
+        "Handlebar": "Aluminum 740mm",
+        "Seatpost": "Aluminum Dropper Post"
+      },
+      drivetrain: {
+        "Shifter": "Shimano 9-speed",
+        "Rear Derailleur": "Shimano Deore",
+        "Crankset": "52T Chainring",
+        "Cassette": "11-34T",
+        "Chain": "KMC X9"
+      },
+      brakes: {
+        "Front Brake": "Tektro Hydraulic Disc 203mm",
+        "Rear Brake": "Tektro Hydraulic Disc 180mm",
+        "Brake Levers": "Tektro Hydraulic"
+      },
+      wheels: {
+        "Rims": "Aluminum Double Wall",
+        "Tires": "26\" x 4.0\" Fat Tires",
+        "Hubs": "Aluminum Sealed Bearing"
+      },
+      electronics: {
+        "Display": "LCD Color Display with USB",
+        "Throttle": "Thumb Throttle",
+        "Lights": "LED Headlight & Taillight",
+        "USB Port": "Yes (5V 2A)"
+      }
     }
   };
+
+  const getSpecCategories = (model: any) => ({
+    "Overview": model.overview,
+    "Frame & Fork": model.frame,
+    "Drivetrain": model.drivetrain,
+    "Brakes": model.brakes,
+    "Wheels & Tires": model.wheels,
+    "Electronics": model.electronics
+  });
 
   return (
     <section className="py-20 bg-gray-50">
@@ -97,18 +165,11 @@ const SpecSheet = () => {
               <Card>
                 <CardContent className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {Object.entries({
-                      "Overview": model.overview,
-                      "Frame & Fork": model.frame,
-                      "Drivetrain": model.drivetrain,
-                      "Brakes": model.brakes,
-                      "Wheels & Tires": model.wheels,
-                      "Electronics": model.electronics
-                    }).map(([category, items]) => (
+                    {Object.entries(getSpecCategories(model)).map(([category, items]) => (
                       <div key={category}>
                         <h3 className="font-semibold text-lg mb-3">{category}</h3>
                         <div className="space-y-2">
-                          {Object.entries(items).map(([spec, value]) => (
+                          {Object.entries(items as Record<string, string>).map(([spec, value]) => (
                             <div key={spec} className="flex justify-between text-sm">
                               <span className="text-gray-600">{spec}:</span>
                               <span className="font-medium">{value}</span>
