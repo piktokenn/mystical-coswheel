@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
@@ -19,7 +19,7 @@ const ProductCard = ({ name, price, image, range, speed, chargeTime, id }: Produ
   const numericPrice = parseFloat(price.replace('$', '').replace(',', ''));
   
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group h-full flex flex-col">
       <div 
         className="aspect-video overflow-hidden"
         onClick={() => navigate(`/product/${id}`)}
@@ -34,22 +34,22 @@ const ProductCard = ({ name, price, image, range, speed, chargeTime, id }: Produ
         <CardTitle className="text-xl group-hover:text-orange-500 transition-colors">
           {name}
         </CardTitle>
-        <CardDescription className="text-2xl font-bold text-orange-500">{price}</CardDescription>
+        <div className="text-2xl font-bold text-orange-500">{price}</div>
       </CardHeader>
-      <CardContent onClick={() => navigate(`/product/${id}`)}>
+      <CardContent onClick={() => navigate(`/product/${id}`)} className="flex-grow">
         <div className="space-y-2">
-          <div className="flex items-center text-sm text-gray-600">
-            <span>Range: {range}</span>
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">Range:</span> {range}
           </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <span>Max Speed: {speed}</span>
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">Max Speed:</span> {speed}
           </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <span>Charge Time: {chargeTime}</span>
+          <div className="text-sm text-gray-600">
+            <span className="font-medium">Charge Time:</span> {chargeTime}
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex gap-2">
+      <CardFooter className="flex gap-2 mt-auto">
         <AddToCartButton 
           product={{
             id,
