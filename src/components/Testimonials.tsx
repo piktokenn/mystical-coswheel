@@ -16,13 +16,13 @@ const Testimonials = () => {
       location: "Seattle, WA",
       rating: 5,
       text: "Amazing build quality and customer service. The battery life is incredible - I can go days without charging. Best investment I've made this year.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w极=150&q=80"
     },
     {
       name: "Emily Rodriguez",
       location: "Austin, TX",
       rating: 5,
-      text: "I was skeptical about e-bikes until I tried COSWHEEL. The power delivery is smooth and natural. It feels like having superpowers on two wheels!",
+      text: "I was skeptical about e-bikes until I tried HZEBIKES. The power delivery is smooth and natural. It feels like having superpowers on two wheels!",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     }
   ];

@@ -46,7 +46,7 @@ const VirtualTestRide = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Book a Test Ride</h2>
           <p className="text-xl text-gray-600">
-            Experience the power and comfort of COSWHEEL bikes firsthand
+            Experience the power and comfort of HZEBIKES bikes firsthand
           </p>
         </div>
         

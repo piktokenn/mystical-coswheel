@@ -149,7 +149,7 @@ const SpecSheet = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Technical Specifications</h2>
           <p className="text-xl text-gray-600">
-            Detailed specifications for all COSWHEEL models
+            Detailed specifications for all HZEBIKES models
           </p>
         </div>
         

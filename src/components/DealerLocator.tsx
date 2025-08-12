@@ -8,7 +8,7 @@ const DealerLocator = () => {
   const [zipCode, setZipCode] = useState('');
   const [dealers, setDealers] = useState([
     {
-      name: "COSWHEEL San Francisco",
+      name: "HZEBIKES San Francisco",
       address: "123 Market St, San Francisco, CA 94105",
       phone: "(415) 555-0123",
       distance: "2.3 miles",
@@ -16,7 +16,7 @@ const DealerLocator = () => {
       services: ["Test Rides", "Sales", "Service", "Accessories"]
     },
     {
-      name: "COSWHEEL Berkeley",
+      name: "HZEBIKES Berkeley",
       address: "456 University Ave, Berkeley, CA 94704",
       phone: "(510) 555-0456",
       distance: "8.7 miles",
@@ -24,7 +24,7 @@ const DealerLocator = () => {
       services: ["Test Rides", "Sales", "Service"]
     },
     {
-      name: "COSWHEEL Oakland",
+      name: "HZEBIKES Oakland",
       address: "789 Broadway, Oakland, CA 94607",
       phone: "(510) 555-0789",
       distance: "12.1 miles",
@@ -44,7 +44,7 @@ const DealerLocator = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Find a Dealer</h2>
           <p className="text-xl text-gray-600">
-            Locate your nearest COSWHEEL dealer for test rides and service
+            Locate your nearest HZEBIKES dealer for test rides and service
           </p>
         </div>
         

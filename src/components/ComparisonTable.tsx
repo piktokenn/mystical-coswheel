@@ -52,7 +52,7 @@ const ComparisonTable = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Compare Models</h2>
           <p className="text-xl text-gray-600">
-            Find the perfect COSWHEEL bike for your needs
+            Find the perfect HZEBIKES bike for your needs
           </p>
         </div>
         
@@ -94,7 +94,7 @@ const ComparisonTable = () => {
                   <TableCell key={model.name} className="text-center">{model.battery}</TableCell>
                 ))}
               </TableRow>
-              <TableRow>
+              <Table极Row>
                 <TableCell className="font-medium">Weight</TableCell>
                 {models.map((model) => (
                   <TableCell key={model.name} className="text-center">{model.weight}</TableCell>

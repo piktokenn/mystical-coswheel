@@ -37,7 +37,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-orange-500 mr-3 mt-1" />
                 <div>
                   <p className="font-semibold">Email</p>
-                  <p className="text-gray-600">info@coswheel.com</p>
+                  <p className="text-gray-600">info@hze bikes.com</p>
                 </div>
               </div>
             </div>

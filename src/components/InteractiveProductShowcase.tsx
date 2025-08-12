@@ -10,7 +10,7 @@ const InteractiveProductShowcase = () => {
 
   const products = [
     {
-      name: "COSWHEEL T26 Pro",
+      name: "HZEBIKES T26 Pro",
       price: "$1,499",
       images: [
         "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
