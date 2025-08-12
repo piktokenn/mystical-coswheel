@@ -5,7 +5,7 @@ const Products = () => {
   const products = [
     {
       id: 't26',
-      name: "COSWHEEL T26",
+      name: "COSWHEEL T26 Pro",
       price: "$1,299",
       image: "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       range: "50-60 miles",
@@ -46,6 +46,15 @@ const Products = () => {
           {products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-4">
+            Click on any product to view detailed specifications and more images
+          </p>
+          <a href="/products" className="text-orange-500 hover:text-orange-600 font-medium">
+            View All Products →
+          </a>
         </div>
       </div>
     </section>
