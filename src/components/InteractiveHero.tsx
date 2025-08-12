@@ -10,17 +10,17 @@ const InteractiveHero = () => {
     {
       title: "Ride the Future",
       subtitle: "Discover the perfect electric bike for your urban adventures",
-      image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      image: "https://www.coswheelebike.com/cdn/shop/files/02_c39a1928-2df5-41c9-9593-01f55007f635.jpg?v=1725635639&width=500"
     },
     {
       title: "Power Meets Style",
       subtitle: "750W motor with 70-mile range in a sleek design",
-      image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      image: "https://www.coswheelebike.com/cdn/shop/files/GT20-main-01.jpg?v=1753253453&width=500"
     },
     {
       title: "Conquer Any Terrain",
       subtitle: "Full suspension and all-terrain tires for ultimate versatility",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      image: "https://www.coswheelebike.com/cdn/shop/files/GT20main-03.jpg?v=1753253453&width=500"
     }
   ];
 
