@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -7,12 +7,14 @@ import { Bike } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/data/products';
 import { Slider } from '@/components/ui/slider';
+import { useLocation } from 'react-router-dom';
 
 const ProductsPage = () => {
   const [sortOption, setSortOption] = useState('featured');
   const [filter, setFilter] = useState('');
   const [priceRange, setPriceRange] = useState([0, 2000]);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const location = useLocation();
 
   const categories = [
     { id: 'all', name: 'All Bikes' },
@@ -21,6 +23,15 @@ const ProductsPage = () => {
     { id: 'folding', name: 'Folding' },
     { id: 'cargo', name: 'Cargo' }
   ];
+
+  // Extract search query from URL
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const searchQuery = searchParams.get('search');
+    if (searchQuery) {
+      setFilter(searchQuery);
+    }
+  }, [location]);
 
   const filteredProducts = products
     .filter(product => 

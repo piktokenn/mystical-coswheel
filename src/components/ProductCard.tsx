@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
+import AddToWishlistButton from './AddToWishlistButton';
 import { Badge } from '@/components/ui/badge';
 
 interface ProductCardProps {
@@ -96,7 +97,7 @@ const ProductCard = ({
         </div>
       </CardContent>
       
-      <CardFooter className="flex gap-2 mt-auto">
+      <CardFooter className="flex flex-col gap-2 mt-auto">
         <AddToCartButton 
           product={{
             id,
@@ -106,9 +107,17 @@ const ProductCard = ({
             type: 'bike'
           }}
         />
+        <AddToWishlistButton 
+          product={{
+            id,
+            name,
+            price,
+            image
+          }}
+        />
         <Button 
           variant="outline" 
-          className="flex-1"
+          className="w-full"
           onClick={() => navigate(`/product/${id}`)}
         >
           View Details

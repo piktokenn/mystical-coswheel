@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import CartIcon from './CartIcon';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const navItems = [
@@ -15,6 +16,14 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+    }
+  };
 
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
@@ -50,10 +59,30 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <form onSubmit={handleSearch} className="relative">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="px-4 py-2 border border-gray-300 rounded-lg w-64"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button 
+                type="submit"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            </form>
+            <Link to="/wishlist" className="text-gray-700 hover:text-orange-500">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </Link>
             <Link to="/checkout">
               <CartIcon />
             </Link>
-            <Button onClick={() => navigate('/products')}>Get Started</Button>
+            <Button onClick={() => navigate('/products')}>Shop Now</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -76,6 +105,23 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t">
           <div className="px-2 pt-2 pb-3 space-y-1">
+            <form onSubmit={handleSearch} className="px-3 py-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button 
+                  type="submit"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                >
+                  <Search className="h-5 w-5" />
+                </button>
+              </div>
+            </form>
             {navItems.map((item) => (
               <button
                 key={item.name}
@@ -85,11 +131,19 @@ const Header = () => {
                 {item.name}
               </button>
             ))}
+            <div className="flex justify-between px-3 py-2">
+              <Link to="/wishlist" className="text-gray-700 hover:text-orange-500 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                Wishlist
+              </Link>
+            </div>
             <Button 
               className="w-full mt-2"
               onClick={() => navigate('/products')}
             >
-              Get Started
+              Shop Now
             </Button>
           </div>
         </div>
