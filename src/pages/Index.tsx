@@ -18,6 +18,7 @@ import Newsletter from '@/components/Newsletter';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { MadeWithDyad } from '@/components/made-with-dyad';
+import ProductComparisonTool from '@/components/ProductComparisonTool';
 
 const Index = () => {
   return (
@@ -31,6 +32,7 @@ const Index = () => {
         <InteractiveProductShowcase />
         <VideoSection />
         <ComparisonTable />
+        <ProductComparisonTool />
         <Testimonials />
         <Accessories />
         <SpecSheet />
