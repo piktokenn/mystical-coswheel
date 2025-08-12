@@ -1,17 +1,5 @@
-import React from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { TooltipProvider } from '@/components/ui/tooltip';
-import { Toaster } from '@/components/ui/sonner';
-import { Sonner } from '@/components/ui/sonner';
-import Index from '@/pages/Index';
-import ProductsPage from '@/pages/ProductsPage';
-import Checkout from '@/pages/Checkout';
-import ProductDetail from '@/pages/ProductDetail';
-import NotFound from '@/pages/NotFound';
-import { CartProvider } from '@/context/CartContext';
-
-const queryClient = new QueryClient();
+// ... existing imports
+import ProductsPage from './pages/ProductsPage';
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -33,5 +21,3 @@ const App = () => (
     </CartProvider>
   </QueryClientProvider>
 );
-
-export default App;

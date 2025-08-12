@@ -3,83 +3,39 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
-import { Badge } from '@/components/ui/badge';
 
 interface ProductCardProps {
   name: string;
-  price: number;
-  originalPrice?: number;
+  price: string;
   image: string;
   range: string;
   speed: string;
   chargeTime: string;
   id: string;
-  isNew?: boolean;
-  onSale?: boolean;
 }
 
-const ProductCard = ({ 
-  name, 
-  price, 
-  originalPrice, 
-  image, 
-  range, 
-  speed, 
-  chargeTime, 
-  id,
-  isNew = false,
-  onSale = false
-}: ProductCardProps) => {
+const ProductCard = ({ name, price, image, range, speed, chargeTime, id }: ProductCardProps) => {
   const navigate = useNavigate();
-  const formattedPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(price);
+  const numericPrice = parseFloat(price.replace('$', '').replace(',', ''));
   
-  const formattedOriginalPrice = originalPrice 
-    ? new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0,
-      }).format(originalPrice)
-    : null;
-
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group h-full flex flex-col">
-      <div className="relative">
-        {isNew && (
-          <Badge className="absolute top-2 left-2 bg-green-500">New</Badge>
-        )}
-        {onSale && (
-          <Badge className="absolute top-2 left-2 bg-orange-500">Sale</Badge>
-        )}
-        <div 
-          className="aspect-video overflow-hidden"
-          onClick={() => navigate(`/product/${id}`)}
-        >
-          <img 
-            src={image} 
-            alt={name}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+      <div 
+        className="aspect-video overflow-hidden"
+        onClick={() => navigate(`/product/${id}`)}
+      >
+        <img 
+          src={image} 
+          alt={name}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+        />
       </div>
-      
       <CardHeader onClick={() => navigate(`/product/${id}`)}>
         <CardTitle className="text-xl group-hover:text-orange-500 transition-colors">
           {name}
         </CardTitle>
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-orange-500">{formattedPrice}</span>
-          {formattedOriginalPrice && (
-            <span className="text-lg text-gray-500 line-through">
-              {formattedOriginalPrice}
-            </span>
-          )}
-        </div>
+        <div className="text-2xl font-bold text-orange-500">{price}</div>
       </CardHeader>
-      
       <CardContent onClick={() => navigate(`/product/${id}`)} className="flex-grow">
         <div className="space-y-2">
           <div className="text-sm text-gray-600">
@@ -93,13 +49,12 @@ const ProductCard = ({
           </div>
         </div>
       </CardContent>
-      
       <CardFooter className="flex gap-2 mt-auto">
         <AddToCartButton 
           product={{
             id,
             name,
-            price,
+            price: numericPrice,
             image,
             type: 'bike'
           }}
