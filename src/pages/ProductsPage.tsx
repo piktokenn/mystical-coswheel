@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { Bike, Zap, Clock, ChevronDown, ChevronUp } from 'lucide-react';
+import { Bike } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/data/products';
+import { Slider } from '@/components/ui/slider';
 
 const ProductsPage = () => {
   const [sortOption, setSortOption] = useState('featured');
   const [filter, setFilter] = useState('');
   const [priceRange, setPriceRange] = useState([0, 2000]);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [expandedFilters, setExpandedFilters] = useState(false);
 
   const categories = [
     { id: 'all', name: 'All Bikes' },
@@ -31,7 +31,6 @@ const ProductsPage = () => {
     .sort((a, b) => {
       if (sortOption === 'price-low') return a.price - b.price;
       if (sortOption === 'price-high') return b.price - a.price;
-      if (sortOption === 'range') return parseInt(b.range) - parseInt(a.range);
       return 0;
     });
 
@@ -68,7 +67,7 @@ const ProductsPage = () => {
                     <span>${priceRange[0]}</span>
                     <Slider
                       value={priceRange}
-                      onValueChange={setPriceRange}
+                      onValueChange={(value) => setPriceRange(value)}
                       min={0}
                       max={2000}
                       step={50}
@@ -115,7 +114,6 @@ const ProductsPage = () => {
                     <SelectItem value="featured">Featured</SelectItem>
                     <SelectItem value="price-low">Price: Low to High</SelectItem>
                     <SelectItem value="price-high">Price: High to Low</SelectItem>
-                    <SelectItem value="range">Range: Highest First</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -142,7 +140,7 @@ const ProductsPage = () => {
                   <ProductCard
                     key={product.id}
                     name={product.name}
-                    price={`$${product.price}`}
+                    price={product.price}
                     image={product.image}
                     range={product.range}
                     speed={product.speed}
