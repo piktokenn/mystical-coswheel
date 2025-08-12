@@ -7,6 +7,9 @@ export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: [
+      "a5d15c76e0816413fd1b05d7ea8d47b3.serveo.net"
+    ]
   },
   plugins: [dyadComponentTagger(), react()],
   resolve: {
