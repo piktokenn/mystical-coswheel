@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bike, Zap, Clock } from 'lucide-react';
-import AddToCartButton from './AddToCartButton';
+import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import AddToCartButton from './AddToCartButton';
 
 interface ProductCardProps {
   name: string;
@@ -39,15 +39,12 @@ const ProductCard = ({ name, price, image, range, speed, chargeTime, id }: Produ
       <CardContent onClick={() => navigate(`/product/${id}`)}>
         <div className="space-y-2">
           <div className="flex items-center text-sm text-gray-600">
-            <Zap className="h-4 w-4 mr-2" />
             <span>Range: {range}</span>
           </div>
           <div className="flex items-center text-sm text-gray-600">
-            <Bike className="h-4 w-4 mr-2" />
             <span>Max Speed: {speed}</span>
           </div>
           <div className="flex items-center text-sm text-gray-600">
-            <Clock className="h-4 w-4 mr-2" />
             <span>Charge Time: {chargeTime}</span>
           </div>
         </div>
