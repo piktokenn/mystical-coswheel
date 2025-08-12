@@ -9,8 +9,8 @@ import {
 const FAQ = () => {
   const faqs = [
     {
-      question: "What's the warranty on HZEBIKES bikes?",
-      answer: "All HZEBIKES bikes come with a 2-year comprehensive warranty covering the frame, motor, and battery. We also offer extended warranty options for additional peace of mind."
+      question: "What's the warranty on COSWHEEL bikes?",
+      answer: "All COSWHEEL bikes come with a 2-year comprehensive warranty covering the frame, motor, and battery. We also offer extended warranty options for additional peace of mind."
     },
     {
       question: "How long does shipping take?",
@@ -40,7 +40,7 @@ const FAQ = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
           <p className="text-xl text-gray-600">
-            Everything you need to know about HZEBIKES electric bikes
+            Everything you need to know about COSWHEEL electric bikes
           </p>
         </div>
         

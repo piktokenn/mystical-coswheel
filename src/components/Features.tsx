@@ -29,7 +29,7 @@ const Features = () => {
     <section id="features" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose HZEBIKES</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose COSWHEEL</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Experience the perfect blend of performance, reliability, and innovation
           </p>
